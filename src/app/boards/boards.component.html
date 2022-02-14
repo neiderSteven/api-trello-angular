@@ -1,0 +1,44 @@
+<nav class="navbar navbar-light bg-danger">
+  <div class="container-fluid">
+    <a class="navbar-brand">Hola !! Bienvenido a TREFIND</a>
+    <form class="d-flex">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container">
+  <div
+    class="row"
+    style="
+      background-color: gray;
+      margin-top: 50px;
+      margin-left: 100px;
+      margin-right: 100px;
+    "
+  >
+    <div class="col-md-8">
+      <div class="col-md-3" *ngFor="let board of boards">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ board.name }}</h5>
+            <hr />
+            <p class="card-text">Board Descripción.</p>
+            <a href="{{ board.url }}" class="btn btn-primary"
+              >VISITAR TABLERO</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-dark">Favoritos</button>
+    </div>
+  </div>
+</div>
