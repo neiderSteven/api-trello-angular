@@ -5,6 +5,8 @@ import { NgForm } from '@angular/forms';
 import { UsuarioModel } from '../../models/usuario.model';
 import { AuthService } from '../../services/auth.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,7 +30,11 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    console.log('espere');
+    Swal.fire({
+      title: 'Info...',
+      text: 'Espere!'
+    })
+    Swal.showLoading();
 
     this.auth.login(this.usuario).subscribe(
       (resp) => {
@@ -42,6 +48,11 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         console.log(err.error.error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al autenticar',
+          text: err.error.error.message,
+        });
       }
     );
   }

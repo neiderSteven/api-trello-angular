@@ -8,10 +8,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [ AuthGuard ] },
+  { path: '', component: BoardsComponent, pathMatch: 'full', canActivate: [ AuthGuard ] },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'boards', component: BoardsComponent, canActivate: [ AuthGuard ] },
+  { path: 'home', component: HomeComponent, canActivate: [ AuthGuard ] },
   { path: '**', redirectTo: '' },
 ];
 

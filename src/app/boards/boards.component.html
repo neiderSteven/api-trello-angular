@@ -1,10 +1,12 @@
 <nav class="navbar navbar-light bg-danger">
   <div class="container-fluid">
     <a class="navbar-brand">Hola !! Bienvenido a TREFIND</a>
-    <form class="d-flex">
+    <form class="d-flex" (ngSubmit)="searchBoards(f)" #f="ngForm">
       <input
         class="form-control me-2"
-        type="search"
+        name="query"
+        type="query"
+        [(ngModel)]="query"
         placeholder="Search"
         aria-label="Search"
       />
@@ -14,31 +16,36 @@
 </nav>
 
 <div class="container">
-  <div
-    class="row"
-    style="
-      background-color: gray;
-      margin-top: 50px;
-      margin-left: 100px;
-      margin-right: 100px;
-    "
-  >
+  <div class="row" style="background-color: gray; margin-top: 50px">
     <div class="col-md-8">
-      <div class="col-md-3" *ngFor="let board of boards">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ board.name }}</h5>
-            <hr />
-            <p class="card-text">Board Descripción.</p>
-            <a href="{{ board.url }}" class="btn btn-primary"
-              >VISITAR TABLERO</a
-            >
+      <div class="row row-cols-1 row-cols-md-3 g-2">
+        <div class="col pt-2 pb-2" *ngFor="let board of boards">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ board.name }}</h5>
+              <hr />
+              <p class="card-text">Board Descripción.</p>
+              <a href="{{ board.url }}" class="btn btn-primary"
+                >VISITAR TABLERO</a
+              >
+              <fa-icon (click)="starredNew(board.id)" [icon]="iconCircle"></fa-icon>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-md-4">
-      <button class="btn btn-dark">Favoritos</button>
+      <button class="btn btn-dark">FAVORITOS</button>
+
+      <div class="card" style="width: 18rem" *ngFor="let board of boardsFavorites">
+        <div class="card-body">
+          <h5 class="card-title">{{ board.name }}</h5>
+          <hr />
+          <p class="card-text">Board Descripción.</p>
+          <a href="{{ board.url }}" class="btn btn-primary">VISITAR TABLERO</a>
+          <fa-icon (click)="starredList(board.id)" [icon]="iconStart"></fa-icon>
+        </div>
+      </div>
     </div>
   </div>
 </div>
