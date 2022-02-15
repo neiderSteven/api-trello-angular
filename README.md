@@ -1,3 +1,17 @@
+## Manual para configurar el ambiente
+
+1. Desacargar e instalar NodeJs https://nodejs.org/es/
+
+2. Instalar Angular con el siguiente comando [npm install -g @angular/cli]
+
+3. Clonar el repositorio en su local con el comando [git clone https://github.com/neiderSteven/api-trello-angular.git]
+
+4. Instalar los paquetes requeridos con [npm install] sobre la ruta del repositorio
+
+5. Para levantar el servidor y abrirlo directamente en el navegador usamos [ng serve -o]
+
+... COMPLETADO ....
+
 # Trello
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
