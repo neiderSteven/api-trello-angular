@@ -24,17 +24,21 @@ export class BoardsComponent implements OnInit {
   }
 
   searchBoards(form: any): void {
-    this.boardService.search(form.form.value.query).subscribe((resp: any) => {
-      this.boards = [];
-      this.boardsFavorites = [];
-      resp.boards.forEach((board: any) => {
-        if (board.starred == true) {
-          this.boardsFavorites.push(board);
-        } else {
-          this.boards.push(board);
-        }
+    if (form.form.value.query == undefined) {
+      this.ngOnInit();
+    } else {
+      this.boardService.search(form.form.value.query).subscribe((resp: any) => {
+        this.boards = [];
+        this.boardsFavorites = [];
+        resp.boards.forEach((board: any) => {
+          if (board.starred == true) {
+            this.boardsFavorites.push(board);
+          } else {
+            this.boards.push(board);
+          }
+        });
       });
-    });
+    }
   }
 
   readBoards(): void {
